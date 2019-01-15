@@ -21,11 +21,11 @@ int match(char* text, int idx, int len, char* st, int n, int* ret)
 }
 
 // Sunday's algorithm
-int Sunday(char* text, int len ,char* st)
+unsigned long Sunday(char* text, int len ,char* st)
 {
     int *index = (int*)malloc(sizeof(int));
     int i      = 0;
-    int cnt    = 0;
+    unsigned long cnt    = 0;
     int n      = strlen(st);
 
     while(i+n <= len)
@@ -46,7 +46,7 @@ int Sunday(char* text, int len ,char* st)
 /*
     Print the result
 */
-void Print(char* output, int text_length, int search_string_cnt)
+void Print(char* output, unsigned long text_length, unsigned long search_string_cnt)
 {
     // open output file
     FILE *fo;
@@ -58,10 +58,10 @@ void Print(char* output, int text_length, int search_string_cnt)
 
     // catenate two string as a output string 
     char tmp1[100];
-    sprintf(tmp1,"%d",text_length);
+    sprintf(tmp1,"%lu",text_length);
     // itoa(text_length,tmp1,10);
     char tmp2[100];
-    sprintf(tmp2,"%d",search_string_cnt);
+    sprintf(tmp2,"%lu",search_string_cnt);
     // itoa(search_string_cnt,tmp2,10);
     char prefix1[] = "Size of file is ";
     char prefix2[] = "Number of matches = ";
@@ -113,15 +113,15 @@ int main(int argc, char* argv[])
 
     // get the length of the input file
     fseek(fi,0,SEEK_END);
-    int text_length = ftell(fi);
+    unsigned long text_length = ftell(fi);
     rewind(fi);
 
     // char text[80];
 
     int i;
-    int accumulativeSize = 0;
+    unsigned long accumulativeSize = 0;
     int bufferSize = 80;
-    int SearchStringCnt = 0;
+    unsigned long SearchStringCnt = 0;
     char *text = (char*)malloc(80*sizeof(char));
     char *LastPart = (char*)malloc((n-1)*sizeof(char));
     char *tmp = (char*)malloc(100*sizeof(char));
